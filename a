@@ -1,0 +1,45 @@
+
+##DJANGO URLS
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('about/', views.about, name='about'),
+]
+
+
+##DJANGO VIEW
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def index(request):
+    return HttpResponse("Hello, world. You're at the index page.")
+
+def about(request):
+    return HttpResponse("This is the about page.")
+
+##HML
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Web Page</title>
+</head>
+<body>
+    <h1>Welcome to My Website</h1>
+    <p>This is a paragraph of text.</p>
+</body>
+</html>
+
+##ORM
+
+from django.db import models
+
+class Person(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    birth_date = models.DateField()
+
+
+people = Person.objects.filter(first_name='John')
